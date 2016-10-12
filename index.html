@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="bot">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+
+<script src="js/app.js"></script>
+<script src="js/main.controller.js"></script>
+
+<script type="text/javascript">
+     $.ajax({
+        url: 'https://api.wit.ai/message',
+        data: {
+          'q': 'hello',
+          'v': '20160526',
+          'access_token' : 'IWGP3TVMWNRIXEYZ5WCA3ODYJQNG6W7J'
+        },
+        dataType: 'jsonp',
+        method: 'GET',
+        success: function(response) {
+           
+            console.log("success!", response);
+        }
+     });
+
+</script>
+</head>
+<body>
+<h1>
+     Hello Banking Bot </h1>
+
+<div ng-Controller="mainController as mainCtrl">
+     <input type="text" ng-model="mainCtrl.query" />
+     <input type="button" value="chat" ng-click="mainCtrl.chatWithBot()" />
+     Bot Reply = {{mainCtrl.botReply}}
+</div>
+
+</body>
+</html>
